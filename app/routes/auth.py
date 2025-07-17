@@ -8,12 +8,12 @@ from app.services.auth_service import (
     authenticate_user_db, 
     create_access_token, 
     get_current_active_user,
-    ACCESS_TOKEN_EXPIRE_MINUTES
+    ACCESS_TOKEN_EXPIRE_MINUTES,
+    get_user_by_username,
+    get_user_by_email
 )
 from app.services.user_service import (
     get_user_by_id,
-    get_user_by_username,
-    get_user_by_email,
     create_user as create_user_service,
     convert_db_user_to_user
 )
