@@ -1,0 +1,20 @@
+[project]
+name = "fastapi-starter-template"
+version = "0.1.0"
+description = "FastAPI starter with JWT authentication, role-based access control, and item management"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.136.0",
+    "uvicorn[standard]>=0.49.0",
+    "pydantic>=2.13.0",
+    "pydantic-settings>=2.14.0",
+    "sqlalchemy>=2.0.40",
+    "passlib[bcrypt]>=1.7.4",
+    "bcrypt<4.0",
+    "python-jose[cryptography]>=3.5.0",
+    "python-multipart>=0.0.32",
+]
+
+[tool.uv]
+package = false

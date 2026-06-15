@@ -26,7 +26,7 @@ A modern FastAPI application featuring user authentication, role-based access co
 ## Project Structure
 
 ```
-├── app/
+├── app/                          # Application package
 │   ├── database/
 │   │   ├── __init__.py
 │   │   └── init_db.py          # Database initialization
@@ -48,11 +48,26 @@ A modern FastAPI application featuring user authentication, role-based access co
 ├── config.py                   # Application configuration
 ├── database.py                 # Database setup
 ├── main.py                     # Application entry point
-├── requirements.txt            # Python dependencies
+├── pyproject.toml              # Project metadata & dependencies
+├── uv.lock                     # Pinned dependency versions (commit this)
 └── .env.example               # Environment variables template
 ```
 
 ## Installation
+
+This project uses [uv](https://docs.astral.sh/uv/) for fast, reproducible dependency management. Install uv first:
+
+```bash
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# or: pip install uv, brew install uv, etc.
+```
+
+Then set up the project:
 
 1. **Clone the repository**
    ```bash
@@ -60,22 +75,16 @@ A modern FastAPI application featuring user authentication, role-based access co
    cd fastapi-auth-app
    ```
 
-2. **Create a virtual environment**
+2. **Sync dependencies** (creates `.venv/` and installs everything pinned in `uv.lock`)
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   uv sync
    ```
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set up environment variables**
+3. **Set up environment variables**
    ```bash
    cp .env.example .env
    ```
-   
+
    Edit `.env` file with your configuration:
    ```env
    SECRET_KEY=your_secret_key_here
@@ -87,7 +96,7 @@ A modern FastAPI application featuring user authentication, role-based access co
 ### Running the Application
 
 ```bash
-uvicorn main:app --reload
+uv run uvicorn main:app --reload
 ```
 
 The application will be available at:
