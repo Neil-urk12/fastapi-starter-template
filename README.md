@@ -41,10 +41,12 @@ A modern FastAPI application featuring user authentication, role-based access co
 │   ├── schemas/
 │   │   ├── item.py             # Item Pydantic schemas
 │   │   └── user.py             # User Pydantic schemas
-│   └── services/
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── auth_service.py     # Token issuance + FastAPI auth dependencies
+│   └── repositories/
 │       ├── __init__.py
-│       ├── auth_service.py     # Authentication logic
-│       └── user_service.py     # User management logic
+│       └── user_repository.py  # User persistence (lookups, creation, password hashing)
 ├── config.py                   # Application configuration
 ├── database.py                 # Database setup
 ├── main.py                     # Application entry point
@@ -203,7 +205,7 @@ The application automatically:
 1. **Models**: Add new SQLAlchemy models in `app/models/`
 2. **Schemas**: Create Pydantic schemas in `app/schemas/`
 3. **Routes**: Implement API endpoints in `app/routes/`
-4. **Services**: Add business logic in `app/services/`
+4. **Services / Repositories**: Add business logic in `app/services/`, persistence in `app/repositories/`
 
 ### Testing
 
